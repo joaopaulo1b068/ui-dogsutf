@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { PURPLE } from '../styles/colors'
+import {SMALL} from '../libs/grid'
 import { LOGO_HEADER, BAR_ICON_HEADER } from '../libs/urls'
 
 export const Header = (props) => {
@@ -21,7 +22,7 @@ export const Header = (props) => {
 
    return (
       <StyledHeader>
-         <img src={LOGO_HEADER} alt="Logo Cachorro" />
+         <Link to="/" ><img src={LOGO_HEADER} alt="Logo Cachorro" /></Link>
          <div className="links">
             {routes.map(route => {
                return (
@@ -53,16 +54,19 @@ const StyledHeader = styled.div`
       align-items: center;
    }
 
-   @media( min-width: 400px ){
+   @media( min-width: ${SMALL} ){
       .botao-expand{
          display:none;
       }
    }
 
-   @media( max-width: 400px ){
+   @media( max-width: ${SMALL} ){
       .links{
          display: none;
       }
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
    }
 
    img{
