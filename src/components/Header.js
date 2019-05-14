@@ -53,20 +53,6 @@ const StyledHeader = styled.div`
       align-items: center;
    }
 
-   .menu-items {
-      background-color: white;
-      padding: 5px;
-      border-radius: 4px;
-   }
-
-   .menu-off{
-      display: none;
-   }
-
-   .botao-expand{
-      display: block;
-   }
-
    @media( min-width: 400px ){
       .botao-expand{
          display:none;
@@ -92,12 +78,6 @@ const StyledHeader = styled.div`
 
    .ativo {
       font-weight: bold;
-   }
-
-   .menu-on > a {
-      color: black;
-      text-decoration: none;
-      font-size: 16px;
    }
 
 `
