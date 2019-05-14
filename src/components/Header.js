@@ -22,21 +22,6 @@ export const Header = (props) => {
    return (
       <StyledHeader>
          <img src={LOGO_HEADER} alt="Logo Cachorro" />
-         <div className="botao-expand">
-            <img onClick={() => setExpand(!expand)} src={BAR_ICON_HEADER} alt="icone do menu principal" />
-         </div>
-            <div className={`${expand ? 'menu-on' : 'menu-off'} `}>
-               {routes.map(route => {
-                  return (
-                     <Link
-                        to={route.path}
-                        key={route.path}
-                        className={`${props.route === route.path ? 'ativo' : ''} `}
-                     > {route.name}
-                     </Link>
-                  )
-               })}
-            </div>
          <div className="links">
             {routes.map(route => {
                return (
@@ -105,17 +90,14 @@ const StyledHeader = styled.div`
       font-size: 14px;
    }
 
+   .ativo {
+      font-weight: bold;
+   }
+
    .menu-on > a {
       color: black;
       text-decoration: none;
       font-size: 16px;
    }
 
-   .menu-on {
-      float: bottom;
-   }
-
-   .ativo {
-      font-weight: bold;
-   }
 `
