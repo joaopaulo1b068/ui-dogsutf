@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { PURPLE } from '../styles/colors'
 import {SMALL} from '../libs/grid'
-import { LOGO_HEADER, BAR_ICON_HEADER } from '../libs/urls'
+import { LOGO_HEADER } from '../libs/urls'
 
 export const Header = (props) => {
 
@@ -18,8 +18,6 @@ export const Header = (props) => {
       { path: '/login', name: 'Login' }
    ]
 
-   const [expand, setExpand] = useState(false)
-
    return (
       <StyledHeader>
          <Link to="/" ><img src={LOGO_HEADER} alt="Logo Cachorro" /></Link>
@@ -29,7 +27,7 @@ export const Header = (props) => {
                   <Link
                      to={route.path}
                      key={route.path}
-                     className={`${props.route === route.path ? 'ativo' : ''} `}
+                     className={`${props.history.location.pathname === route.path ? 'ativo' : ''} `}
                   > {route.name}
                   </Link>
                )
