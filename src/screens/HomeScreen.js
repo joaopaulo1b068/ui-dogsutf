@@ -1,14 +1,13 @@
 import React from 'react'
-import { Header } from '../components/Header';
 import styled from 'styled-components'
 import { Selector } from '../components/Selector';
 import {Lista} from '../components/Lista'
+import {XLARGE} from '../libs/grid'
 
 export const HomeScreen = (props) => {
 
     return (
         <StyledHomeScreen>
-            <Header route={props.history.location.pathname} />
             <Selector />
             <Lista />
         </StyledHomeScreen>
@@ -16,5 +15,9 @@ export const HomeScreen = (props) => {
 }
 
 const StyledHomeScreen = styled.div`
-    background-color: rgba(211,211,211,0.2);
+    background-color: white;
+    max-width: ${XLARGE};
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
 `
