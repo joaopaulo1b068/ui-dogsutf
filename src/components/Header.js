@@ -71,6 +71,7 @@ const StyledHeader = styled.div`
 
    img{
       width: 80px;
+      margin-left: 10px;
    }
 
    .links > a{
