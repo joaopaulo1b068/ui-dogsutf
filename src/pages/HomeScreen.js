@@ -18,6 +18,6 @@ const StyledHomeScreen = styled.div`
     background-color: white;
     max-width: ${LARGE};
     margin: 0 auto;
-    height: 100%;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
 `
