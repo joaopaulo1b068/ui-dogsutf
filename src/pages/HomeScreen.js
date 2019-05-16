@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Selector } from '../components/Selector';
 import {Lista} from '../components/Lista'
-import {XLARGE} from '../libs/grid'
+import {LARGE} from '../libs/grid'
 
 export const HomeScreen = (props) => {
 
@@ -16,7 +16,7 @@ export const HomeScreen = (props) => {
 
 const StyledHomeScreen = styled.div`
     background-color: white;
-    max-width: ${XLARGE};
+    max-width: ${LARGE};
     margin: 0 auto;
     height: 100%;
     width: 100%;
