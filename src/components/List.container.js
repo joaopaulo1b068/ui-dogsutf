@@ -27,15 +27,20 @@ export class ListContainer extends React.Component {
    }
 }
 
+//    display: grid;
+// grid-template-columns: repeat(auto-fit, 250px);
+
 const StyledList = styled.div`
     background-color: white;
     margin: 30px 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);
     text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
    
    .card{
       margin: 10px;
+      width: 250px;
    }
 
    .link{
