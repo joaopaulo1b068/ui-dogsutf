@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Selector } from '../components/Selector';
-import {Lista} from '../components/Lista'
+import {ListContainer} from '../components/List.container'
 import {LARGE} from '../libs/grid'
 
 export const HomeScreen = (props) => {
@@ -9,7 +9,7 @@ export const HomeScreen = (props) => {
     return (
         <StyledHomeScreen>
             <Selector />
-            <Lista />
+            <ListContainer />
         </StyledHomeScreen>
     )
 }
