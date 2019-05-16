@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { GRAY } from '../styles/colors'
-import {XLARGE} from '../libs/grid'
+import {LARGE} from '../libs/grid'
 
 export const Footer = () => {
     return (
@@ -17,7 +17,7 @@ export const Footer = () => {
 const StyledFooter = styled.div`
     background-color: ${GRAY};
     width: 100%;
-    max-width: ${XLARGE};
+    max-width: ${LARGE};
     margin: 0 auto;
     display: flex;
     flex-direction: column;
