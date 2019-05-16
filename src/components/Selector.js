@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
+import {SMALL} from '../libs/grid'
 
 export const Selector = () => {
 
@@ -60,7 +61,7 @@ export const Selector = () => {
                className="select-uf"
                value={select.ufSelecionado}
                onChange={(event) => setSelect({ ...select, ufSelecionado: event.target.value })}>
-               <option value={false} disabled>Selecione...</option>
+               <option value={false} disabled>Estado</option>
                {select.uf.map(item => {
                   return (
                      <option key={item.sigla} value={JSON.stringify(item)}>{item.nome}</option>
@@ -102,6 +103,7 @@ const StyledSelector = styled.div`
     select{
         width: 200px;
         padding: 10px;
+        margin: 10px 0;
         border-radius: 4px;
         font-size: 14px;
         font-family: 'Montserrat', sans-serif;
@@ -129,5 +131,12 @@ const StyledSelector = styled.div`
             grid-row: 2 / 3;
             grid-column: 2 / 3;
          }
+    }
+
+    @media(max-width: ${SMALL}){
+       .select-container{
+          display: flex;
+          flex-direction: column;
+       }
     }
 `

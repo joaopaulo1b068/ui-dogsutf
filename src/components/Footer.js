@@ -16,8 +16,8 @@ export const Footer = () => {
 
 const StyledFooter = styled.div`
     background-color: ${GRAY};
-    width: 100%;
     max-width: ${LARGE};
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
