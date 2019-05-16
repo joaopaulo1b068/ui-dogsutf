@@ -5,18 +5,6 @@ import styled from 'styled-components'
 import {Header} from './components/Header'
 import {Footer} from './components/Footer'
 import {GRAY} from './styles/colors'
-import {XLARGE} from './libs/grid'
-
-// const PublicRoute = ({component: Component, ...params}) => {
-//   <Route 
-//     {...params} 
-//     render={props => 
-//       (<Component 
-//         {...props, state: {from: props.location} } />
-//       ) 
-//     } 
-//   />
-// }
 
 const PublicRoute = ({component: Component, ...params}) => (
   <Route {...params} render={props =>  (
