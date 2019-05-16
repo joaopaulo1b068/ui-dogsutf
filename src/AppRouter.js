@@ -15,13 +15,15 @@ const PublicRoute = ({component: Component, ...params}) => (
       </StyledScreen>) 
   }/>
 )
-
-const StyledScreen = styled.div`
-  display: flex;
+/**
+ *   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
+ */
+const StyledScreen = styled.div`
   background-color: ${GRAY};
+  display: grid;
+  grid-template-rows: 80px auto 120px;
 `
 
 export const AppRouter = () => {
