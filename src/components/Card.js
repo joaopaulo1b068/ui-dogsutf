@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {PURPLE} from '../styles/colors'
+//import {PURPLE} from '../styles/colors'
 
 export const Card = (props) => {
     return (

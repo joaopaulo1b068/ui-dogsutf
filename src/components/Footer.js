@@ -5,7 +5,7 @@ import {LARGE} from '../libs/grid'
 
 export const Footer = () => {
     return (
-        <StyledFooter>
+        <StyledFooter id="footer">
             <span>UTFPR Ponta Grossa</span>
             <span>DEMO de Propósitos Educacionais</span>
             <span>Trabalho de Conclusão de Curso</span>

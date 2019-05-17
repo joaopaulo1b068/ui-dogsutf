@@ -19,7 +19,7 @@ export const Header = (props) => {
    ]
 
    return (
-      <StyledHeader>
+      <StyledHeader id="header">
          <Link to="/" ><img src={LOGO_HEADER} alt="Logo Cachorro" /></Link>
          <div className="links">
             {routes.map(route => {
