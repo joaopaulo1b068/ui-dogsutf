@@ -23,11 +23,20 @@ class SignUpScreenContainer extends React.Component {
 
     handleSubmit = (data) => {
         this.props.asyncSignUp(data)
-        this.props.history.push('/login')
     }
 
-    state = {
-        aluno: false
+    state = { aluno: false }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.user !== this.props.user) {
+            console.log('user cadastrado ', this.props.user)
+            setTimeout( () => {
+                this.props.history.push('/login')
+            }, 2000)
+        }
+        if (prevProps.error !== this.props.error){
+            console.log('error signup ', this.props.error)
+        }
     }
 
     render() {
@@ -60,8 +69,11 @@ class SignUpScreenContainer extends React.Component {
 
                         <label htmlFor="passwordconfirm" >Confirme a Senha</label>
                         <Input name="passwordconfirm" type="password" />
-
+                        
                         <button type="submit" className="btn-sub" >Cadastrar</button>
+                        {this.props.error && <span>Serviço Não Disponível</span>}
+                        {this.props.error && <span>Tente Novamente mais Tarde</span>}
+                        {this.props.user && <span>Cadastrado !! Redirecionando para a página de Login</span>}
                     </Form>
                     <div className="banner"></div>
                 </div>
@@ -71,8 +83,8 @@ class SignUpScreenContainer extends React.Component {
 }
 
 const mapStateToProps = store => ({
-    newValue: store.clickState.newValue,
-    thunk: store.clickState.thunk
+    user: store.signupState.user,
+    error: store.signupState.error
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ asyncSignUp }, dispatch)
