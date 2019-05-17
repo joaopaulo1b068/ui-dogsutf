@@ -31,7 +31,7 @@ export const asyncSignUp = form => {
   return (dispatch) => {
     axios.post('http://localhost:8081/cadastro', form).then(
       user => {dispatch( signUpSuccess(user) )},
-      error => console.log(error)
+      error => {dispatch( signUpError(error) )}
     )
   }
 }
@@ -39,4 +39,9 @@ export const asyncSignUp = form => {
 let signUpSuccess = user => ({
   type: 'SIGNUP_SUCCESS',
   payload: user
+})
+
+let signUpError = error => ({
+  type: 'SIGNUP_ERROR',
+  payload: error
 })
