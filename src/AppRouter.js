@@ -5,10 +5,12 @@ import styled from 'styled-components'
 import {Header} from './components/Header'
 import {Footer} from './components/Footer'
 import {GRAY} from './styles/colors'
+import { SignUpScreen } from './pages/SignUpScreen';
+import { LoginScreen } from './pages/LoginScreen';
 
 const PublicRoute = ({component: Component, ...params}) => (
   <Route {...params} render={props =>  (
-      <StyledScreen>
+      <StyledScreen id="router-comp">
         <Header {...props} />
         <Component {...props}  />
         <Footer  />
@@ -31,6 +33,8 @@ export const AppRouter = () => {
 
     <BrowserRouter>
       <PublicRoute path="/" exact component={HomeScreen} />
+      <PublicRoute path="/cadastro" exact component={SignUpScreen} />
+      <PublicRoute path="/login" exact component={LoginScreen} />
     </BrowserRouter>
   )
 }
