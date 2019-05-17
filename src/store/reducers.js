@@ -16,6 +16,9 @@ const clickReducer = (state = initialState, action) => {
     case 'THUNK': 
       console.log(action.payload)
       return {...state, thunk: JSON.stringify(action.payload)}
+    case 'SIGNUP_SUCCESS':
+        console.log(action.payload)
+        return { ...state, user: action.payload }
     default:
       return state;
   }
