@@ -26,3 +26,17 @@ export const asyncAct = (value) => {
     )
   }
 }
+
+export const asyncSignUp = form => {
+  return (dispatch) => {
+    axios.post('http://localhost:8081/cadastro', form).then(
+      user => {dispatch( signUpSuccess(user) )},
+      error => console.log(error)
+    )
+  }
+}
+
+let signUpSuccess = user => ({
+  type: 'SIGNUP_SUCCESS',
+  payload: user
+})
