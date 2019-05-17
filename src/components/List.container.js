@@ -3,8 +3,16 @@ import styled from 'styled-components'
 import { Card } from './Card'
 import { Link } from 'react-router-dom';
 
-export class ListContainer extends React.Component {
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {clickButton} from '../store/actions'
 
+class ListClass extends React.Component {
+
+   // constructor(props){
+   //    super(props)
+   //    this.newValue = props.newValue
+   // }
    list = [
       {img: 'https://res.cloudinary.com/hqbf9dy02/image/upload/v1558016517/dogsutf/download_1_cfapth.jpg'},
       {img: 'https://res.cloudinary.com/hqbf9dy02/image/upload/v1558016517/dogsutf/download_v7zntp.jpg'},
@@ -12,6 +20,7 @@ export class ListContainer extends React.Component {
    ]
 
    render() {
+      const {newValue} = this.props 
       return (
          <StyledList>
             {this.list.map( (dog, index) => (
@@ -26,6 +35,15 @@ export class ListContainer extends React.Component {
       )
    }
 }
+
+const mapStateToProps = store => ({
+   newValue: store.clickState.newValue
+ })
+
+ const mapDispatchToProps = dispatch =>
+  bindActionCreators({ clickButton }, dispatch);
+
+ export const ListContainer = connect(mapStateToProps, mapDispatchToProps) (ListClass)
 
 //    display: grid;
 // grid-template-columns: repeat(auto-fit, 250px);
