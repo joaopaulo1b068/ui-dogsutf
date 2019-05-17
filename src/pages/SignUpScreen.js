@@ -1,76 +1,83 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import * as Yup from 'yup'
+import PropTypes from 'prop-types'
 import { LARGE, SMALL } from '../libs/grid'
 import { Form, Input } from "@rocketseat/unform";
 import { PURPLE } from '../styles/colors'
 
-export const SignUpScreen = () => {
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { asyncSignUp } from '../store/actions'
 
-    const schema = Yup.object().shape({
-        name: Yup
-            .string()
-            .required('Preencha esse Campo'),
-        email: Yup
-            .string()
-            .email('Insira um Email Válido')
-            .required('Preencha esse Campo'),
-        password: Yup
-            .string()
-            .min(4, 'Use Pelo Menos 4 Caracteres')
-            .required('Preencha esse Campo'),
-        passwordconfirm: Yup
-            .string()
-            .oneOf([Yup.ref('password'), null], 'As Senhas não são Iguais'),
-        curso: Yup
-            .string(),
-        campus: Yup
-            .string()
+class SignUpScreenContainer extends React.Component {
+
+    schema = Yup.object().shape({
+        name: Yup.string().required('Preencha esse Campo'),
+        email: Yup.string().email('Insira um Email Válido').required('Preencha esse Campo'),
+        password: Yup.string().min(4, 'Use Pelo Menos 4 Caracteres').required('Preencha esse Campo'),
+        passwordconfirm: Yup.string().oneOf([Yup.ref('password'), null], 'As Senhas não são Iguais'),
+        curso: Yup.string(),
+        campus: Yup.string(),
     })
 
-    const handleSubmit = (data) => {
-        console.log({...data, aluno});
+    handleSubmit = (data) => {
+        this.props.asyncSignUp(data)
+        this.props.history.push('/login')
     }
 
-    const [aluno, setAluno] = useState(false)
+    state = {
+        aluno: false
+    }
 
-    return (
-        <StyledSignUpScreen id="sign-up-screen" >
-            <div className="titulo">Cadastro</div>
-            <div className="container">
-                <Form schema={schema} onSubmit={handleSubmit} className="form" >
+    render() {
+        return (
+            <StyledSignUpScreen id="sign-up-screen" >
+                <div className="titulo">Cadastro</div>
+                <div className="container">
+                    <Form schema={this.schema} onSubmit={this.handleSubmit} className="form" >
 
-                    <label htmlFor="name">Nome</label>
-                    <Input name="name" />
+                        <label htmlFor="name">Nome</label>
+                        <Input name="name" />
 
-                    <label htmlFor="email">Email</label>
-                    <Input name="email" />
+                        <label htmlFor="email">Email</label>
+                        <Input name="email" />
 
-                    <label htmlFor="isAluno" >É aluno da UTF ?</label>
-                    <select value={aluno} onChange={(event) => setAluno(event.target.value)}>
-                        <option value={true}>Sim</option>
-                        <option value={false}>Não</option>
-                    </select>
+                        <label htmlFor="isAluno" >É aluno da UTF ?</label>
+                        <select value={this.state.aluno} onChange={ (event) => this.setState({aluno: event.target.value}) }>
+                            <option value={true}>Sim</option>
+                            <option value={false}>Não</option>
+                        </select>
 
-                    <label htmlFor="curso" >Curso</label>
-                    <Input name="curso" disabled={!aluno} type="text" />
+                        <label htmlFor="curso" >Curso</label>
+                        <Input name="curso" disabled={!this.state.aluno} type="text" />
 
-                    <label htmlFor="campus" >Campus (cidade)</label>
-                    <Input name="campus" disabled={!aluno} type="text" />
+                        <label htmlFor="campus" >Campus (cidade)</label>
+                        <Input name="campus" disabled={!this.state.aluno} type="text" />
 
-                    <label htmlFor="password" >Senha</label>
-                    <Input name="password" type="password" />
+                        <label htmlFor="password" >Senha</label>
+                        <Input name="password" type="password" />
 
-                    <label htmlFor="passwordconfirm" >Confirme a Senha</label>
-                    <Input name="passwordconfirm" type="password" />
+                        <label htmlFor="passwordconfirm" >Confirme a Senha</label>
+                        <Input name="passwordconfirm" type="password" />
 
-                    <button type="submit" className="btn-sub" >Cadastrar</button>
-                </Form>
-                <div className="banner"></div>
-            </div>
-        </StyledSignUpScreen>
-    )
+                        <button type="submit" className="btn-sub" >Cadastrar</button>
+                    </Form>
+                    <div className="banner"></div>
+                </div>
+            </StyledSignUpScreen>
+        )
+    }
 }
+
+const mapStateToProps = store => ({
+    newValue: store.clickState.newValue,
+    thunk: store.clickState.thunk
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({ asyncSignUp }, dispatch)
+
+export const SignUpScreen = connect(mapStateToProps, mapDispatchToProps)(SignUpScreenContainer)
 
 const StyledSignUpScreen = styled.div`
     background-color: white;

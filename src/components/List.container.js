@@ -23,17 +23,14 @@ class ListClass extends React.Component {
       const {newValue, thunk, asyncAct } = this.props 
       return (
          <StyledList>
-            <span>{thunk}</span>
-            <span>{newValue}</span>
-            <button onClick={asyncAct}>Thunk</button>
-            {/* {this.list.map( (dog, index) => (
+            {this.list.map( (dog, index) => (
                   <div className="card" key={index}>
                      <Link to="/" className="link"> 
                         <Card dog={dog} />
                      </Link>
                   </div>
                )
-            )} */}
+            )}
          </StyledList>
       )
    }
