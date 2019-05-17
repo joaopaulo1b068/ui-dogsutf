@@ -35,12 +35,14 @@ const StyledList = styled.div`
     margin: 30px 10px;
     text-decoration: none;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     height: 100%;
    
    .card{
       margin: 10px;
       width: 250px;
+      text-align: center;
    }
 
    .link{
