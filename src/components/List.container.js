@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {clickButton} from '../store/actions'
+import {clickButton, asyncAct} from '../store/actions'
 
 class ListClass extends React.Component {
 
@@ -20,28 +20,32 @@ class ListClass extends React.Component {
    ]
 
    render() {
-      const {newValue} = this.props 
+      const {newValue, thunk, asyncAct } = this.props 
       return (
          <StyledList>
-            {this.list.map( (dog, index) => (
+            <span>{thunk}</span>
+            <span>{newValue}</span>
+            <button onClick={asyncAct}>Thunk</button>
+            {/* {this.list.map( (dog, index) => (
                   <div className="card" key={index}>
                      <Link to="/" className="link"> 
                         <Card dog={dog} />
                      </Link>
                   </div>
                )
-            )}
+            )} */}
          </StyledList>
       )
    }
 }
 
 const mapStateToProps = store => ({
-   newValue: store.clickState.newValue
+   newValue: store.clickState.newValue,
+   thunk: store.clickState.thunk
  })
 
  const mapDispatchToProps = dispatch =>
-  bindActionCreators({ clickButton }, dispatch);
+  bindActionCreators({ clickButton, asyncAct }, dispatch);
 
  export const ListContainer = connect(mapStateToProps, mapDispatchToProps) (ListClass)
 
